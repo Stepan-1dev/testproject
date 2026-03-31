@@ -37,15 +37,14 @@ jobs:
         run: docker push dezenfection/mydigitalmaster
 
       - name: Deploy over SSH
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_KEY }}
-          script: |
-            cd /home/user1/app || exit
-            docker pull dezenfection/mydigitalmaster
-            
+        run: |
+          echo "${{ secrets.VPS_KEY}}" > private_key
+          chmod 600 private_key
+          
+          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          cd /home/user1/app || exit
+          docker pull dezenfection/mydigitalmaster
+
             
 
 
