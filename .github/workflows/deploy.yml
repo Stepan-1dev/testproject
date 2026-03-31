@@ -8,6 +8,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Where I am
+        run: dir
+
       - name: Build docker image
         run: docker build -t my-app-image .
 
@@ -19,7 +22,7 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           script: |
             cd /app || exit
-  
+
             git pull origin main
             
             docker compose down
