@@ -1,0 +1,8 @@
+name: CI/CD Pipelane
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "opa"
