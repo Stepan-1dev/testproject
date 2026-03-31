@@ -21,7 +21,7 @@ jobs:
         run: dir
 
       - name: Build docker image
-        run: docker build -t my-app-image.
+        run: docker build -t my-app-image .
 
       - name: Give name of image
         run: docker tag my-app-image dezenfection/my-app-image
