@@ -4,7 +4,7 @@ public class Main{
         try {
             while (true) {
                 System.out.println("Проверка проекта");
-                Thread.sleep(1001);
+                Thread.sleep(1002);
             }
         } catch (InterruptedException e){
             System.out.println("Ошибка!");
