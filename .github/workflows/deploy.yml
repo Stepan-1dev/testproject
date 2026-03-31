@@ -21,7 +21,13 @@ jobs:
         run: dir
 
       - name: Build docker image
-        run: docker build -t my-app-image .
+        run: docker build -t my-app-image.
+
+      - name: Give name of image
+        run: docker tag my-app-image dezenfection/my-app-image
+
+      - name: Push docker image in Docker Hub
+        run: docker push dezenfection/my-app-image
 
       - name: Deploy over SSH
         uses: appleboy/ssh-action@master
@@ -31,10 +37,8 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           script: |
             cd /home/user1/app || exit
+            docker pull dezenfection/my-app-image
             
-            sudo docker compose down
-            sudo docker compose up -d --build
             
-            sudo docker image prune -f
 
 
