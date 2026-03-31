@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
           script: |
-            cd /app || exit
+            cd /home/user1/app || exit
             
             docker compose down
             docker compose up -d --build
