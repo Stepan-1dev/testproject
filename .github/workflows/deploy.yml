@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN}}
 
       - name: Give name of image
-        run: docker tag my-app-image dezenfection/mydigitalmaster
+        run: docker tag mydigitalmaster dezenfection/mydigitalmaster
 
       - name: Push docker image in Docker Hub
         run: docker push dezenfection/mydigitalmaster
